@@ -1,6 +1,5 @@
 // Filename:        regression.cpp
-// Owner:           Jeremy Thomas
-// Purpose:         Class definitions for the Regression class
+// boilerplate incoming
 
 #include "regression.hpp"
 
@@ -64,11 +63,11 @@ void Regression::sumsCalculator()
 
     for (int i=0; i<_data.size(); i++)
     {
-        // SSyy
+        // The sum of all (y_i - yAve)^2
         _SSyy+= std::pow(_data[i].second-_yAve, 2);
-        // SSxy
+        // The sum of all (y_i - yAve)*(x_i - xAve)
         _SSxy+= (_data[i].second-_yAve)*(_data[i].first-_xAve);
-        // SSxx
+        // The sum of all (x_i - xAve)^2
         _SSxx+= std::pow(_data[i].first-_xAve, 2);
     }
     // End of sumsCalculator
