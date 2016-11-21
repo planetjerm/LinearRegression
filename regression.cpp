@@ -4,21 +4,14 @@
 
 #include "regression.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <utility>
-
 Regression::Regression(const std::vector<std::pair<double, double>> & data)
 {
     _data=data;
     sumsCalculator();
     slopeCalculator();
     interceptCalculator();
-    uncertaintiesCalculator();
     stdDevCalculator();
+    uncertaintiesCalculator();
 }
     
 double Regression::getSlope()
@@ -105,32 +98,8 @@ void Regression::interceptCalculator()
 void Regression::uncertaintiesCalculator()
 {
     // The uncertainty in the slope
-    _uncertaintySlope = _stdDev/std::pow(_SSxx, 0.5);
+    _uncertaintySlope = _stdDev/(std::pow(_SSxx, 0.5));
 
     // The uncertainty in the intercept
     _uncertaintyIntercept = _stdDev*(1/_data.size()+std::pow(_xAve, 2)/_SSxx);
-}
-
-// detla s is y
-// w is x
-
-int main()
-{
-    std::vector <std::pair<double, double>> data;
-    
-    // Initalize a test vector;
-    for (double i=0; i<10; i++)
-    {
-        data.push_back(std::make_pair(i, i));
-        // std::cout << data[i].first << " " << data[i].second << std::endl;
-    }
-    
-    Regression swag(data);
-    
-    std::cout << "Slope: " << swag.getSlope() << std::endl;
-    std::cout << "intercept: " << swag.getIntercept() << std::endl;
-    std::cout << "stdDev: " << swag.getStdDev() << std::endl;
-    std::cout << "Slope uncertainty: " << swag.getSlopeUncertainty() << std::endl;
-    std::cout << "Intercept uncertainty: " << swag.getInterceptUncertainty() << std::endl;
-    
 }

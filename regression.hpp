@@ -8,6 +8,9 @@
 #include <vector>
 #include <string>
 #include <utility>
+#include <iostream>
+#include <fstream>
+#include <cmath>
 	
 class Regression
 {
@@ -67,4 +70,4 @@ private:
 // };
 
 
-#endif //#ifndef FILE_BUBBLE_SORT_H_INCLUDED
+#endif //#ifndef FILE_REGRESSION_H_INCLUDED
